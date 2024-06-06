@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: nadav0176/my_app:tagname
+        image: nadav0176/my_app:latest
         ports:
         - containerPort: 80
