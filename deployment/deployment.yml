@@ -13,7 +13,7 @@ spec:
         app: python-app
     spec:
       containers:
-      - name: my_app
+      - name: webapp
         image: python_app
         ports:
         - containerPort: 80
