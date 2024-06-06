@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/NadavBem/K8S_Jenkins_ArgoCD.git
     targetRevision: HEAD
-    path: deployment.yml
+    path: deployment
   destination:
     server: https://kubernetes.default.svc
     namespace: default 
