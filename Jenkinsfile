@@ -55,27 +55,5 @@ pipeline {
                 }
             }
         }
-        
-        //  stage('Update Kubernetes Manifests') {
-        //     steps {
-        //         script {
-        //             sh """
-        //                 sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
-        //             """
-        //             withCredentials([usernamePassword(credentialsId: 'github_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        //                 sh '''
-        //                     git config --global user.email "jenkins@example.com"
-        //                     git config --global user.name "Jenkins"
-        //                     git add .
-        //                     git commit -m "Update deployment.yaml with build number ${BUILD_NUMBER}"
-        //                     git push https://${USERNAME}:${PASSWORD}@github.com/DorAvissar/K8S_Jenkins.git main
-        //                 '''
-        //             }
-
-        //             echo 'Finished pushing changes to GitHub'
-
-        //         }
-        //     }
-        // }
     }
 }
