@@ -48,14 +48,14 @@ pipeline {
         stage('Update Kubernetes Manifests') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
+                    withCredentials([string(credentialsId: 'GitHub_access_token', variable: 'GIT_TOKEN')]) {
                         sh """
-                            git config user.name "jenkins"
-                            git config user.email "jenkins@example.com"
+                            git config user.name "NadavBem"
+                            git config user.email "nadav0176@gmail.com"
                             sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
                             git add ConfigFiles/cluster_config/deployment.yaml
                             git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'
-                            git push https://${GIT_USER}:${GIT_PASSWORD}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git main
+                            git push https://NadavBem:${GIT_TOKEN}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git ${BRANCH}
                         """
                     }
                 }
