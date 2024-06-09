@@ -50,16 +50,16 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'GitHub_access_token', variable: 'GIT_TOKEN')]) {
                         sh """
-                            git config user.name "jenkins"
+                            git config user.name "Jenkins"
                             git config user.email "jenkins@example.com"
                             sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
                             git add ConfigFiles/cluster_config/deployment.yaml
                             git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'
-                            git push https://jenkins:${GIT_TOKEN}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git ${BRANCH}
+                            git push https://NadavBem:${GIT_TOKEN}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git ${BRANCH}
                         """
                     }
                 }
             }
-        }
+        } 
     }
 }
