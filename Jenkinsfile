@@ -55,7 +55,7 @@ pipeline {
                             sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
                             git add ConfigFiles/cluster_config/deployment.yaml
                             git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'
-                            git push https://${GIT_USER}:${GIT_PASSWORD}@${REPO_URL#https://}
+                            git push https://${GIT_USER}:${GIT_PASSWORD}@${REPO_URL#https://}.git main
                         """
                     }
                 }
