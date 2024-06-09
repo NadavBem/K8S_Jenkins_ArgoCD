@@ -13,7 +13,7 @@ spec:
         app: python-app
     spec:
       containers:
-      - name: webapp
+      - name: python-app
         image: nadav0176/my_app:latest
         ports:
         - containerPort: 80
