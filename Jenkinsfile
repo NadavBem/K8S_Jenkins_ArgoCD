@@ -50,8 +50,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
                         sh """
-                            git config user.name "${GIT_USER}"
-                            git config user.email "nadav0176@gmail.com"
+                            git config user.name "jenkins"
+                            git config user.email "jenkins@example.com"
                             sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
                             git add ConfigFiles/cluster_config/deployment.yaml
                             git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'
