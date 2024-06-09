@@ -44,6 +44,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Update Kubernetes Manifests') {
+            steps {
+                script {
+                    sh "sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml"
+                    sh "git add ConfigFiles/cluster_config/deployment.yaml"
+                    sh "git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'"
+                    sh "git push origin ${BRANCH}"
+                }
+            }
+        }
         
         //  stage('Update Kubernetes Manifests') {
         //     steps {
