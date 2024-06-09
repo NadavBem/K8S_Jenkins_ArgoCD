@@ -6,7 +6,7 @@ pipeline {
         GIT_CREDENTIALS = credentials('GitHub')
         DOCKER_IMAGE = "nadav0176/my_app"
         VERSION = "${env.BUILD_NUMBER}"
-        REPO_URL = 'https://github.com/NadavBem/K8S_Jenkins_ArgoCD'
+        REPO_URL = 'https://github.com/NadavBem/K8S_Jenkins_ArgoCD.git'
         BRANCH = 'main'
     }
     
@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-         stage('Update Kubernetes Manifests') {
+        stage('Update Kubernetes Manifests') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
@@ -60,5 +60,6 @@ pipeline {
                     }
                 }
             }
+        }
     }
 }
