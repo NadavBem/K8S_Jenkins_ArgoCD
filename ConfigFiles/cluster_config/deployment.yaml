@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: nadav0176/my_app:42
+        image: nadav0176/my_app:44
         ports:
         - containerPort: 80
