@@ -55,7 +55,7 @@ pipeline {
                             sed -i 's|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${VERSION}|' ConfigFiles/cluster_config/deployment.yaml
                             git add ConfigFiles/cluster_config/deployment.yaml
                             git commit -m 'Update image to ${DOCKER_IMAGE}:${VERSION}'
-                            git push https://NadavBem:${GIT_TOKEN}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git ${BRANCH}
+                            git push https://jenkins:${GIT_TOKEN}@github.com/NadavBem/K8S_Jenkins_ArgoCD.git ${BRANCH}
                         """
                     }
                 }
